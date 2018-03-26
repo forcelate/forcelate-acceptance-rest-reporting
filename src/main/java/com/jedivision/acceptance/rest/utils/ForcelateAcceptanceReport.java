@@ -11,7 +11,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class JediAcceptance {
+public final class ForcelateAcceptanceReport {
 
     public static void execute() throws AcceptanceException {
         ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationBeans.class);
