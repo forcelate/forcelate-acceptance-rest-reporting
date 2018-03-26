@@ -10,19 +10,19 @@
   },
   "{[/constants/languages],methods=[GET]}": {
     "bean": "requestMappingHandlerMapping",
-    "method": "public com.jedivision.entity.Language[] com.jedivision.resources.ConstantsResource.findLanguages()"
+    "method": "public com.forcelate.entity.Language[] com.forcelate.resources.ConstantsResource.findLanguages()"
   },
   "{[/constants/author/types],methods=[GET]}": {
     "bean": "requestMappingHandlerMapping",
-    "method": "public com.jedivision.entity.AuthorType[] com.jedivision.resources.ConstantsResource.findAuthorTypes()"
+    "method": "public com.forcelate.entity.AuthorType[] com.forcelate.resources.ConstantsResource.findAuthorTypes()"
   },
   "{[/constants/quote/types],methods=[GET]}": {
     "bean": "requestMappingHandlerMapping",
-    "method": "public com.jedivision.entity.QuoteType[] com.jedivision.resources.ConstantsResource.findQuoteTypes()"
+    "method": "public com.forcelate.entity.QuoteType[] com.forcelate.resources.ConstantsResource.findQuoteTypes()"
   },
   "{[/constants/quote/templates],methods=[GET]}": {
     "bean": "requestMappingHandlerMapping",
-    "method": "public java.util.List<java.lang.String> com.jedivision.resources.ConstantsResource.findQuoteTemplateNames() throws com.jedivision.exception.ApplicationException"
+    "method": "public java.util.List<java.lang.String> com.forcelate.resources.ConstantsResource.findQuoteTemplateNames() throws com.forcelate.exception.ApplicationException"
   },
   "{[/error]}": {
     "bean": "requestMappingHandlerMapping",

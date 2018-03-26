@@ -137,16 +137,16 @@
                     </formats>
                     <instrumentation>
                         <excludes>
-                            <exclude>com/jedivision/acceptance/rest/utils/JediAcceptance.class</exclude>
-                            <exclude>com/jedivision/acceptance/rest/utils/configuration/ApplicationBeans.class</exclude>
-                            <exclude>com/jedivision/acceptance/rest/utils/configuration/ApplicationConstants.class</exclude>
-                            <exclude>com/jedivision/acceptance/rest/utils/configuration/ApplicationErrorMessages.class</exclude>
-                            <exclude>com/jedivision/acceptance/rest/utils/configuration/ApplicationProperties.class</exclude>
-                            <exclude>com/jedivision/acceptance/rest/utils/domain/**/*.class</exclude>
-                            <exclude>com/jedivision/acceptance/rest/utils/runner/AcceptanceAbstractRunner.class</exclude>
-                            <exclude>com/jedivision/acceptance/rest/utils/runner/AcceptanceAbstractRunner$1.class</exclude>
-                            <exclude>com/jedivision/acceptance/rest/utils/runner/AcceptanceAbstractRunner$2.class</exclude>
-                            <exclude>com/jedivision/acceptance/rest/utils/support/RestAssureSupport.class</exclude>
+                            <exclude>com/forcelate/acceptance/ForcelateAcceptanceReport.class</exclude>
+                            <exclude>com/forcelate/acceptance/configuration/ApplicationBeans.class</exclude>
+                            <exclude>com/forcelate/acceptance/configuration/ApplicationConstants.class</exclude>
+                            <exclude>com/forcelate/acceptance/configuration/ApplicationErrorMessages.class</exclude>
+                            <exclude>com/forcelate/acceptance/configuration/ApplicationProperties.class</exclude>
+                            <exclude>com/forcelate/acceptance/domain/**/*.class</exclude>
+                            <exclude>com/forcelate/acceptance/runner/AcceptanceAbstractRunner.class</exclude>
+                            <exclude>com/forcelate/acceptance/runner/AcceptanceAbstractRunner$1.class</exclude>
+                            <exclude>com/forcelate/acceptance/runner/AcceptanceAbstractRunner$2.class</exclude>
+                            <exclude>com/forcelate/acceptance/support/RestAssureSupport.class</exclude>
                         </excludes>
                     </instrumentation>
                 </configuration>
