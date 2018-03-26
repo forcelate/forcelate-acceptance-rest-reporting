@@ -4,7 +4,7 @@ import com.forcelate.acceptance.domain.processing.CaseCall;
 import com.forcelate.acceptance.domain.processing.CaseMapping;
 import com.forcelate.acceptance.domain.processing.CaseStatus;
 import com.forcelate.acceptance.domain.processing.Execution;
-import com.forcelate.acceptance.test.JediRandomUtils;
+import com.forcelate.acceptance.test.RandomUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -70,11 +70,11 @@ public class SortUtilsTest {
         // Arrange
         List<CaseCall> calls = new ArrayList<>();
         calls.add(CaseCall.builder()
-                .description(JediRandomUtils.randomString())
+                .description(RandomUtils.randomString())
                 .status(CaseStatus.SUCCESS)
                 .build());
         calls.add(CaseCall.builder()
-                .description(JediRandomUtils.randomString())
+                .description(RandomUtils.randomString())
                 .status(CaseStatus.FAILURE)
                 .build());
 
@@ -91,12 +91,12 @@ public class SortUtilsTest {
         // Arrange
         List<CaseCall> calls1 = new ArrayList<>();
         calls1.add(CaseCall.builder()
-                .description(JediRandomUtils.randomString())
+                .description(RandomUtils.randomString())
                 .status(CaseStatus.SUCCESS)
                 .build());
         List<CaseCall> calls2 = new ArrayList<>();
         calls2.add(CaseCall.builder()
-                .description(JediRandomUtils.randomString())
+                .description(RandomUtils.randomString())
                 .status(CaseStatus.FAILURE)
                 .build());
 

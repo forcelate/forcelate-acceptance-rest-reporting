@@ -1,7 +1,7 @@
 package com.forcelate.acceptance.helpers;
 
 import com.forcelate.acceptance.configuration.ApplicationConstants;
-import com.forcelate.acceptance.test.JediRandomUtils;
+import com.forcelate.acceptance.test.RandomUtils;
 import com.forcelate.acceptance.domain.reporting.Report;
 import com.forcelate.acceptance.exception.AcceptanceException;
 import freemarker.template.Template;
@@ -64,7 +64,7 @@ public class FreemarkerUtilsTest {
     public void generateThrowIOException() throws IOException, AcceptanceException {
         // Arrange
         Report report = mock(Report.class);
-        IOException exception = new IOException(JediRandomUtils.randomString());
+        IOException exception = new IOException(RandomUtils.randomString());
         when(configuration.getTemplate(ApplicationConstants.REPORT_TEMPLATE)).thenThrow(exception);
 
         // Act
@@ -80,7 +80,7 @@ public class FreemarkerUtilsTest {
         // Arrange
         Report report = mock(Report.class);
         Template template = mock(Template.class);
-        TemplateException templateException = new TemplateException(JediRandomUtils.randomString(), null);
+        TemplateException templateException = new TemplateException(RandomUtils.randomString(), null);
         doThrow(templateException).when(template).process(any(Object.class), any(Writer.class));
         when(configuration.getTemplate(ApplicationConstants.REPORT_TEMPLATE)).thenReturn(template);
 

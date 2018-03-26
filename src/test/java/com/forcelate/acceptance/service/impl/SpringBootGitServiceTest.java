@@ -21,7 +21,7 @@ import java.net.ConnectException;
 
 import static com.forcelate.acceptance.configuration.ApplicationConstants.SPRING_BOOT_INFO_URL;
 import static com.forcelate.acceptance.configuration.ApplicationConstants.UNCERTAIN;
-import static com.forcelate.acceptance.test.JediRandomUtils.randomString;
+import static com.forcelate.acceptance.test.RandomUtils.randomString;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.*;

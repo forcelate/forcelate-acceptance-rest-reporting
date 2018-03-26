@@ -10,11 +10,11 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static com.forcelate.acceptance.test.JediRandomUtils.randomString;
+import static com.forcelate.acceptance.test.RandomUtils.randomString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class AccRandomUtils {
+public class AcceptanceUtils {
 
     public static Execution randomExecutionByStatusCount(CaseStatus status, int count) {
         return Execution.builder()

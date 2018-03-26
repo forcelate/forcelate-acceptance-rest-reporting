@@ -1,6 +1,6 @@
 package com.forcelate.acceptance.configuration;
 
-import com.forcelate.acceptance.test.JediRandomUtils;
+import com.forcelate.acceptance.test.RandomUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,7 +40,7 @@ public class ApplicationProfileTest {
     @Test
     public void get() {
         // Arrange
-        String profile = JediRandomUtils.randomString();
+        String profile = RandomUtils.randomString();
         System.setProperty(ApplicationConstants.PROFILE_KEY, profile);
         componentUnderTest.init();
 

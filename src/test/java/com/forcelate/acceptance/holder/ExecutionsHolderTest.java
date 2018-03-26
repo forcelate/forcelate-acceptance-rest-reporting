@@ -3,9 +3,9 @@ package com.forcelate.acceptance.holder;
 import com.forcelate.acceptance.domain.processing.CaseCall;
 import com.forcelate.acceptance.domain.processing.CaseMapping;
 import com.forcelate.acceptance.domain.processing.CaseStatus;
-import com.forcelate.acceptance.test.AccRandomUtils;
-import com.forcelate.acceptance.test.JediCoberturaUtils;
-import com.forcelate.acceptance.test.JediRandomUtils;
+import com.forcelate.acceptance.test.AcceptanceUtils;
+import com.forcelate.acceptance.test.CoberturaUtils;
+import com.forcelate.acceptance.test.RandomUtils;
 import com.forcelate.acceptance.test.ReflectionUtils;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -23,7 +23,7 @@ public class ExecutionsHolderTest {
 
     @BeforeClass
     public static void beforeClass() {
-        JediCoberturaUtils.classCoverageHook(ExecutionsHolder.class);
+        CoberturaUtils.classCoverageHook(ExecutionsHolder.class);
     }
 
     @Before
@@ -35,8 +35,8 @@ public class ExecutionsHolderTest {
     public void addExecutionNotExists() {
         // Arrange
         Description description = mock(Description.class);
-        CaseStatus status = JediRandomUtils.randomEnum(CaseStatus.class);
-        String message = JediRandomUtils.randomString();
+        CaseStatus status = RandomUtils.randomEnum(CaseStatus.class);
+        String message = RandomUtils.randomString();
 
         // Act
         ExecutionsHolder.addExecution(description, status, message);
@@ -51,12 +51,12 @@ public class ExecutionsHolderTest {
     @Test
     public void addExecutionExists() {
         // Arrange
-        String endpoint = JediRandomUtils.randomString();
-        String httpType = JediRandomUtils.randomString();
-        Description description1 = AccRandomUtils.description(endpoint, httpType);
-        Description description2 = AccRandomUtils.description(endpoint, httpType);
-        CaseStatus status = JediRandomUtils.randomEnum(CaseStatus.class);
-        String message = JediRandomUtils.randomString();
+        String endpoint = RandomUtils.randomString();
+        String httpType = RandomUtils.randomString();
+        Description description1 = AcceptanceUtils.description(endpoint, httpType);
+        Description description2 = AcceptanceUtils.description(endpoint, httpType);
+        CaseStatus status = RandomUtils.randomEnum(CaseStatus.class);
+        String message = RandomUtils.randomString();
 
         // Act
         ExecutionsHolder.addExecution(description1, status, message);

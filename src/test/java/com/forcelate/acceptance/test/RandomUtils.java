@@ -11,7 +11,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 @SuppressWarnings({ "rawtypes", "unchecked" })
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class JediRandomUtils {
+public final class RandomUtils {
     private static Random rnd = ThreadLocalRandom.current();
 
     static final String FREEMARKER_MAP_KEY = "randomKey";

@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import static com.forcelate.acceptance.configuration.ApplicationErrorMessages.EMPTY_RESPONSE;
-import static com.forcelate.acceptance.test.JediRandomUtils.randomString;
+import static com.forcelate.acceptance.test.RandomUtils.randomString;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;

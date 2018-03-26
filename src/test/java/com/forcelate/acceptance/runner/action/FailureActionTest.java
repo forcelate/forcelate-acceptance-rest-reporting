@@ -5,7 +5,7 @@ import com.forcelate.acceptance.domain.processing.CaseCall;
 import com.forcelate.acceptance.domain.processing.CaseMapping;
 import com.forcelate.acceptance.domain.processing.CaseStatus;
 import com.forcelate.acceptance.holder.ExecutionsHolder;
-import com.forcelate.acceptance.test.JediRandomUtils;
+import com.forcelate.acceptance.test.RandomUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.Description;
@@ -28,7 +28,7 @@ public class FailureActionTest extends AbstractActionRunner{
     @Test
     public void selectFalse() {
         // Arrange
-        when(e.getMessage()).thenReturn(JediRandomUtils.randomString());
+        when(e.getMessage()).thenReturn(RandomUtils.randomString());
 
         // Act
         boolean select = actionUnderTest.select(e);
@@ -40,7 +40,7 @@ public class FailureActionTest extends AbstractActionRunner{
     @Test
     public void selectTrueWhenStatusCode500() {
         // Arrange
-        when(e.getMessage()).thenReturn(JediRandomUtils.randomString() + ApplicationErrorMessages.STATUS_CODE_500 + JediRandomUtils.randomString());
+        when(e.getMessage()).thenReturn(RandomUtils.randomString() + ApplicationErrorMessages.STATUS_CODE_500 + RandomUtils.randomString());
 
         // Act
         boolean select = actionUnderTest.select(e);
@@ -52,7 +52,7 @@ public class FailureActionTest extends AbstractActionRunner{
     @Test
     public void selectTrueWhenWrongResponseBody() {
         // Arrange
-        when(e.getMessage()).thenReturn(JediRandomUtils.randomString() + ApplicationErrorMessages.WRONG_RESPONSE_BODY + JediRandomUtils.randomString());
+        when(e.getMessage()).thenReturn(RandomUtils.randomString() + ApplicationErrorMessages.WRONG_RESPONSE_BODY + RandomUtils.randomString());
 
         // Act
         boolean select = actionUnderTest.select(e);
@@ -65,7 +65,7 @@ public class FailureActionTest extends AbstractActionRunner{
     public void processWhenStatusCode500() {
         // Arrange
         Description description =  mock(Description.class);
-        when(e.getMessage()).thenReturn(JediRandomUtils.randomString() + ApplicationErrorMessages.STATUS_CODE_500 + JediRandomUtils.randomString());
+        when(e.getMessage()).thenReturn(RandomUtils.randomString() + ApplicationErrorMessages.STATUS_CODE_500 + RandomUtils.randomString());
 
         // Act
         actionUnderTest.select(e);
@@ -84,7 +84,7 @@ public class FailureActionTest extends AbstractActionRunner{
     public void processWhenWrongResponseBody() {
         // Arrange
         Description description =  mock(Description.class);
-        when(e.getMessage()).thenReturn(JediRandomUtils.randomString() + ApplicationErrorMessages.WRONG_RESPONSE_BODY + JediRandomUtils.randomString());
+        when(e.getMessage()).thenReturn(RandomUtils.randomString() + ApplicationErrorMessages.WRONG_RESPONSE_BODY + RandomUtils.randomString());
 
         // Act
         actionUnderTest.select(e);

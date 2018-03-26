@@ -8,7 +8,7 @@ import java.lang.reflect.Constructor;
 
 @Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class JediCoberturaUtils {
+public final class CoberturaUtils {
 
     public static void classCoverageHook(Class<?> clazz) {
         try {

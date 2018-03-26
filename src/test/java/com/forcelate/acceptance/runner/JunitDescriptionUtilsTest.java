@@ -1,8 +1,8 @@
 package com.forcelate.acceptance.runner;
 
 import com.forcelate.acceptance.domain.processing.CaseAnnotation;
-import com.forcelate.acceptance.test.JediCoberturaUtils;
-import com.forcelate.acceptance.test.JediRandomUtils;
+import com.forcelate.acceptance.test.CoberturaUtils;
+import com.forcelate.acceptance.test.RandomUtils;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.Description;
@@ -45,7 +45,7 @@ public class JunitDescriptionUtilsTest {
 
     @BeforeClass
     public static void beforeClass() {
-        JediCoberturaUtils.classCoverageHook(JunitDescriptionUtils.class);
+        CoberturaUtils.classCoverageHook(JunitDescriptionUtils.class);
     }
 
     @Test
@@ -99,7 +99,7 @@ public class JunitDescriptionUtilsTest {
     @Test
     public void byFuncNotPresent() {
         // Arrange
-        String random = JediRandomUtils.randomString();
+        String random = RandomUtils.randomString();
         when(description.getAnnotation(CaseAnnotation.class)).thenReturn(null);
 
         // Act
@@ -112,7 +112,7 @@ public class JunitDescriptionUtilsTest {
     @Test
     public void byFunc() {
         // Arrange
-        String random = JediRandomUtils.randomString();
+        String random = RandomUtils.randomString();
         when(description.getAnnotation(CaseAnnotation.class)).thenReturn(annotation);
 
         // Act

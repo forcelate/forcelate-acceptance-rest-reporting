@@ -3,7 +3,7 @@ package com.forcelate.acceptance.report;
 import com.forcelate.acceptance.configuration.ApplicationProperties;
 import com.forcelate.acceptance.domain.processing.CaseCall;
 import com.forcelate.acceptance.holder.ExecutionsHolder;
-import com.forcelate.acceptance.test.AccRandomUtils;
+import com.forcelate.acceptance.test.AcceptanceUtils;
 import com.forcelate.acceptance.domain.processing.CaseMapping;
 import com.forcelate.acceptance.domain.processing.CaseStatus;
 import com.forcelate.acceptance.domain.processing.Execution;
@@ -30,7 +30,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import java.util.*;
 
 import static com.forcelate.acceptance.domain.processing.CaseStatus.*;
-import static com.forcelate.acceptance.test.JediRandomUtils.*;
+import static com.forcelate.acceptance.test.RandomUtils.*;
 import static com.forcelate.acceptance.test.ReflectionUtils.fieldHook;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
@@ -102,8 +102,8 @@ public class ReportServiceTest {
         String httpType2 = "GET";
         String endpoint3 = "/api/method3";
         String httpType3 = "GET";
-        ExecutionsHolder.addExecution(AccRandomUtils.description(endpoint1, httpType1), SUCCESS, randomString());
-        ExecutionsHolder.addExecution(AccRandomUtils.description(endpoint2, httpType2), FAILURE, randomString());
+        ExecutionsHolder.addExecution(AcceptanceUtils.description(endpoint1, httpType1), SUCCESS, randomString());
+        ExecutionsHolder.addExecution(AcceptanceUtils.description(endpoint2, httpType2), FAILURE, randomString());
         List<CaseMapping> mappings = new ArrayList<>();
         mappings.add(CaseMapping.builder().endpoint(endpoint1).httpType(httpType1).build());
         mappings.add(CaseMapping.builder().endpoint(endpoint2).httpType(httpType2).build());

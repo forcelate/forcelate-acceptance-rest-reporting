@@ -22,7 +22,7 @@ import java.io.InputStream;
 import java.net.ConnectException;
 import java.util.List;
 
-import static com.forcelate.acceptance.test.JediRandomUtils.randomString;
+import static com.forcelate.acceptance.test.RandomUtils.randomString;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;

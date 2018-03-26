@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import static com.forcelate.acceptance.test.JediRandomUtils.randomString;
+import static com.forcelate.acceptance.test.RandomUtils.randomString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;

@@ -1,7 +1,7 @@
 package com.forcelate.acceptance.helpers;
 
 import com.forcelate.acceptance.domain.processing.Execution;
-import com.forcelate.acceptance.test.AccRandomUtils;
+import com.forcelate.acceptance.test.AcceptanceUtils;
 import com.forcelate.acceptance.domain.processing.CaseStatus;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +19,7 @@ import java.util.TreeMap;
 
 import static com.forcelate.acceptance.configuration.ApplicationConstants.UNCERTAIN_COUNT;
 import static com.forcelate.acceptance.domain.processing.CaseStatus.*;
-import static com.forcelate.acceptance.test.JediRandomUtils.randomSmallInteger;
+import static com.forcelate.acceptance.test.RandomUtils.randomSmallInteger;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -58,13 +58,13 @@ public class CountUtilsTest {
         int success = randomSmallInteger();
         List<Execution> executions = new ArrayList<>();
         // each status
-        executions.add(AccRandomUtils.randomExecutionByStatusCount(SERVER_DOWN, serverDowns));
-        executions.add(AccRandomUtils.randomExecutionByStatusCount(FAILURE, failures));
-        executions.add(AccRandomUtils.randomExecutionByStatusCount(UNEXPECTED, unexpected));
-        executions.add(AccRandomUtils.randomExecutionByStatusCount(MISSING, missing));
-        executions.add(AccRandomUtils.randomExecutionByStatusCount(SUCCESS, success));
+        executions.add(AcceptanceUtils.randomExecutionByStatusCount(SERVER_DOWN, serverDowns));
+        executions.add(AcceptanceUtils.randomExecutionByStatusCount(FAILURE, failures));
+        executions.add(AcceptanceUtils.randomExecutionByStatusCount(UNEXPECTED, unexpected));
+        executions.add(AcceptanceUtils.randomExecutionByStatusCount(MISSING, missing));
+        executions.add(AcceptanceUtils.randomExecutionByStatusCount(SUCCESS, success));
         // UNEXPECTED, SUCCESS status separate
-        executions.add(AccRandomUtils.randomExecutionByStatuses(UNEXPECTED, SUCCESS));
+        executions.add(AcceptanceUtils.randomExecutionByStatuses(UNEXPECTED, SUCCESS));
 
         // Act
         Map<CaseStatus, Long> result = utilsUnderTest.executionsStatuses(executions);

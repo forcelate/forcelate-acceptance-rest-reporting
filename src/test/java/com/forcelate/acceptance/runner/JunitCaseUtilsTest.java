@@ -3,8 +3,8 @@ package com.forcelate.acceptance.runner;
 import com.forcelate.acceptance.domain.processing.CaseCall;
 import com.forcelate.acceptance.domain.processing.CaseMapping;
 import com.forcelate.acceptance.domain.processing.CaseStatus;
-import com.forcelate.acceptance.test.JediCoberturaUtils;
-import com.forcelate.acceptance.test.JediRandomUtils;
+import com.forcelate.acceptance.test.CoberturaUtils;
+import com.forcelate.acceptance.test.RandomUtils;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -17,15 +17,15 @@ public class JunitCaseUtilsTest {
 
     @BeforeClass
     public static void beforeClass() {
-        JediCoberturaUtils.classCoverageHook(JunitCaseUtils.class);
+        CoberturaUtils.classCoverageHook(JunitCaseUtils.class);
     }
 
     @Test
     public void getCaseCall() {
         // Arrange
         Description description = mock(Description.class);
-        CaseStatus status = JediRandomUtils.randomEnum(CaseStatus.class);
-        String message = JediRandomUtils.randomString();
+        CaseStatus status = RandomUtils.randomEnum(CaseStatus.class);
+        String message = RandomUtils.randomString();
 
         // Act
         CaseCall caseCall = JunitCaseUtils.getCaseCall(description, status, message);

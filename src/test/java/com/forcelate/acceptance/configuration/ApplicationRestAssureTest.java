@@ -11,8 +11,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import static com.forcelate.acceptance.test.JediRandomUtils.randomInteger;
-import static com.forcelate.acceptance.test.JediRandomUtils.randomString;
+import static com.forcelate.acceptance.test.RandomUtils.randomInteger;
+import static com.forcelate.acceptance.test.RandomUtils.randomString;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
