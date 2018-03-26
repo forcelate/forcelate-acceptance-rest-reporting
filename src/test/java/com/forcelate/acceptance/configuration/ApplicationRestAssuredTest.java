@@ -18,7 +18,7 @@ import static org.mockito.Mockito.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(loader=AnnotationConfigContextLoader.class)
-public class ApplicationRestAssureTest {
+public class ApplicationRestAssuredTest {
 
     @Configuration
     static class ContextConfiguration {
@@ -27,14 +27,14 @@ public class ApplicationRestAssureTest {
         ApplicationProperties applicationProperties() { return mock(ApplicationProperties.class); }
 
         @Bean
-        ApplicationRestAssure applicationRestAssure() {
-            return new ApplicationRestAssure(applicationProperties());
+        ApplicationRestAssured applicationRestAssure() {
+            return new ApplicationRestAssured(applicationProperties());
         }
     }
 
     @Autowired private ApplicationProperties applicationProperties;
 
-    @Autowired private ApplicationRestAssure componentUnderTest;
+    @Autowired private ApplicationRestAssured componentUnderTest;
 
     @Before
     public void before() {

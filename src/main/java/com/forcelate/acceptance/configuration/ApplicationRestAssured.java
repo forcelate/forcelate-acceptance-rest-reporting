@@ -7,12 +7,12 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 @Component
-public class ApplicationRestAssure {
+public class ApplicationRestAssured {
 
     private final ApplicationProperties applicationProperties;
 
     @Autowired
-    public ApplicationRestAssure(ApplicationProperties applicationProperties) {
+    public ApplicationRestAssured(ApplicationProperties applicationProperties) {
         this.applicationProperties = applicationProperties;
     }
 
