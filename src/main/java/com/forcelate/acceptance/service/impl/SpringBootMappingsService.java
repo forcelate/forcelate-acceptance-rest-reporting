@@ -28,7 +28,8 @@ public class SpringBootMappingsService implements MappingsService {
     private static Set<String> springBootFrameworkMappings =
             new HashSet<>(Arrays.asList("/**", "/webjars/**", "/error", "/metrics", "/logfile",
                     "/metrics", "/configprops", "/mappings", "/trace", "/autoconfig", "/env",
-                    "/health", "/beans", "/dump", "info"));
+                    "/health", "/beans", "/dump", "/info", "/api/api-docs", "/auditevents",
+                    "/flyway", "/heapdump", "/loggers"));
 
     private static final Gson gson = new Gson();
 

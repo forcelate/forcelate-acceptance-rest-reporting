@@ -14,8 +14,8 @@ public final class ApplicationConstants {
     public static final String SPRING_BOOT_INFO_URL = "info";
     public static final String SPRING_BOOT_MAPPING_URL = "mappings";
 
-    public static final String REPORT_TEMPLATE = "jedi-springboot-acc-report.ftl";
-    public static final String REPORT_HTML = "target/jedi-springboot-acc-report.html";
+    public static final String REPORT_TEMPLATE = "forcelate-acceptance-report.ftl";
+    public static final String REPORT_HTML = "target/forcelate-acceptance-report.html";
 
     public static final String PROFILE_DEFAULT_VALUE = "dev";
     public static final String PROFILE_KEY = "environment";
