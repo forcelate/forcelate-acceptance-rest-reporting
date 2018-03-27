@@ -31,7 +31,7 @@ public class SpringBootGitService implements GitService {
             return Git.builder()
                     .branch(JsonPath.read(json, "$.git.branch"))
                     .commitId(JsonPath.read(json, "$.git.commit.id"))
-                    .commitTime(new DateTime(Long.valueOf(JsonPath.read(json, "$.git.commit.time"))).toString())
+                    .commitTime(new DateTime((Long) JsonPath.read(json, "$.git.commit.time")).toString())
                     .build();
         } catch (ConnectException | PathNotFoundException e) {
             log.error("Spring git endpoint is unavailable {}", e);
