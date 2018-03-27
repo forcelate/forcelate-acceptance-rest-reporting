@@ -6,6 +6,7 @@ import com.forcelate.acceptance.domain.reporting.Git;
 import com.forcelate.acceptance.service.GitService;
 import com.forcelate.acceptance.support.RestAssureSupport;
 import lombok.extern.slf4j.Slf4j;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +31,7 @@ public class SpringBootGitService implements GitService {
             return Git.builder()
                     .branch(JsonPath.read(json, "$.git.branch"))
                     .commitId(JsonPath.read(json, "$.git.commit.id"))
-                    .commitTime(JsonPath.read(json, "$.git.commit.time"))
+                    .commitTime(new DateTime(Long.valueOf(JsonPath.read(json, "$.git.commit.time"))).toString())
                     .build();
         } catch (ConnectException | PathNotFoundException e) {
             log.error("Spring git endpoint is unavailable {}", e);
