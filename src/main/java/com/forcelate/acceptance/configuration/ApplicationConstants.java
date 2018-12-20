@@ -11,8 +11,8 @@ public final class ApplicationConstants {
     public static final String UNCERTAIN = "Uncertain";
     public static final long UNCERTAIN_COUNT = 0;
 
-    public static final String SPRING_BOOT_INFO_URL = "info";
-    public static final String SPRING_BOOT_MAPPING_URL = "mappings";
+    public static final String SPRING_BOOT_INFO_URL = "/actuator/info";
+    public static final String SPRING_BOOT_MAPPING_URL = "/actuator/mappings";
 
     public static final String REPORT_TEMPLATE = "forcelate-acceptance-report.ftl";
     public static final String REPORT_HTML = "target/forcelate-acceptance-report.html";

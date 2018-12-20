@@ -1,6 +1,6 @@
 package com.forcelate.acceptance.configuration;
 
-import com.jayway.restassured.RestAssured;
+import io.restassured.RestAssured;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,7 +13,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import static com.forcelate.acceptance.test.RandomUtils.randomInteger;
 import static com.forcelate.acceptance.test.RandomUtils.randomString;
-import static org.junit.Assert.assertEquals;
+import static junit.framework.TestCase.assertEquals;
 import static org.mockito.Mockito.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)

@@ -4,7 +4,6 @@ import com.forcelate.acceptance.domain.reporting.Git;
 import com.forcelate.acceptance.service.GitService;
 import com.forcelate.acceptance.support.RestAssureSupport;
 import org.apache.commons.io.IOUtils;
-import org.joda.time.DateTime;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -90,7 +89,7 @@ public class SpringBootGitServiceTest {
         // Assert
         assertEquals("dev", git.getBranch());
         assertEquals("7cb511a", git.getCommitId());
-        assertEquals(new DateTime(152173463400L).toString(), git.getCommitTime());
+        assertEquals("2018-12-13T17:19:31Z", git.getCommitTime());
         verify(restAssureSupport).getResponseJSON(eq(SPRING_BOOT_INFO_URL));
     }
 }

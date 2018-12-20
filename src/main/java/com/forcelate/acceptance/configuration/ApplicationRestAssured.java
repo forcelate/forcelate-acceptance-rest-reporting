@@ -1,6 +1,6 @@
 package com.forcelate.acceptance.configuration;
 
-import com.jayway.restassured.RestAssured;
+import io.restassured.RestAssured;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,12 +1,13 @@
 package com.forcelate.acceptance.support;
 
-import com.jayway.restassured.http.ContentType;
+import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import java.net.ConnectException;
 
-import static com.jayway.restassured.RestAssured.given;
+import static io.restassured.RestAssured.given;
+
 
 @Component
 public class RestAssureSupport {

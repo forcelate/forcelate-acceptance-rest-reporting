@@ -7,10 +7,14 @@ import com.forcelate.acceptance.service.GitService;
 import com.forcelate.acceptance.support.RestAssureSupport;
 import lombok.extern.slf4j.Slf4j;
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+import org.joda.time.format.ISODateTimeFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.net.ConnectException;
+import java.sql.Timestamp;
 
 import static com.forcelate.acceptance.configuration.ApplicationConstants.SPRING_BOOT_INFO_URL;
 import static com.forcelate.acceptance.configuration.ApplicationConstants.UNCERTAIN;
@@ -31,7 +35,7 @@ public class SpringBootGitService implements GitService {
             return Git.builder()
                     .branch(JsonPath.read(json, "$.git.branch"))
                     .commitId(JsonPath.read(json, "$.git.commit.id"))
-                    .commitTime(new DateTime((Long) JsonPath.read(json, "$.git.commit.time")).toString())
+                    .commitTime(JsonPath.read(json, "$.git.commit.time"))
                     .build();
         } catch (ConnectException | PathNotFoundException e) {
             log.error("Spring git endpoint is unavailable {}", e);

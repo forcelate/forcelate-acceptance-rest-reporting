@@ -1,7 +1,7 @@
 package com.forcelate.acceptance.service.impl;
 
-import com.forcelate.acceptance.domain.reporting.MappingsPair;
 import com.forcelate.acceptance.domain.processing.CaseMapping;
+import com.forcelate.acceptance.domain.reporting.MappingsPair;
 import com.forcelate.acceptance.helpers.BracketsUtils;
 import com.forcelate.acceptance.service.MappingsService;
 import com.forcelate.acceptance.support.RestAssureSupport;
@@ -30,7 +30,7 @@ import static org.mockito.Mockito.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(loader=AnnotationConfigContextLoader.class)
 public class SpringBootMappingsServiceTest {
-    private static final String SPRING_BOOT_MAPPING_URL = "mappings";
+    private static final String SPRING_BOOT_MAPPING_URL = "/actuator/mappings";
 
     @Configuration
     static class ContextConfiguration {
