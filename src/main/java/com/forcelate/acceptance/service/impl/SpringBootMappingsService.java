@@ -28,7 +28,8 @@ public class SpringBootMappingsService implements MappingsService {
 			new HashSet<>(Arrays.asList("/**", "/webjars/**", "/error", "/metrics", "/logfile",
 					"/metrics", "/configprops", "/mappings", "/trace", "/autoconfig", "/env",
 					"/health", "/beans", "/dump", "/info", "/api/api-docs", "/auditevents",
-					"/flyway", "/heapdump", "/loggers", "/swagger-resources/configuration/security"));
+					"/flyway", "/heapdump", "/loggers", "/swagger-resources/configuration/security",
+					"/actuator","/actuator/mappings","/actuator/info","/actuator/health"));
 
 
 	private final BracketsUtils bracketsUtils;
