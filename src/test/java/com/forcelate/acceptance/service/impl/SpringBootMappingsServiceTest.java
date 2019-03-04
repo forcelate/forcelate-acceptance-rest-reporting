@@ -1,6 +1,7 @@
 package com.forcelate.acceptance.service.impl;
 
 import com.forcelate.acceptance.domain.processing.CaseMapping;
+import com.forcelate.acceptance.domain.processing.FrameworkType;
 import com.forcelate.acceptance.domain.reporting.MappingsPair;
 import com.forcelate.acceptance.helpers.BracketsUtils;
 import com.forcelate.acceptance.service.MappingsService;
@@ -74,7 +75,7 @@ public class SpringBootMappingsServiceTest {
         when(restAssureSupport.getResponseJSON(SPRING_BOOT_MAPPING_URL)).thenThrow(exception);
 
         // Act
-        MappingsPair pair = serviceUnderTest.retrieve();
+        MappingsPair pair = serviceUnderTest.retrieve(FrameworkType.SPRING_BOOT_V2);
 
         // Assert
         assertFalse(pair.isAvailable());
@@ -91,7 +92,7 @@ public class SpringBootMappingsServiceTest {
         }
 
         // Act
-        MappingsPair pair = serviceUnderTest.retrieve();
+        MappingsPair pair = serviceUnderTest.retrieve(FrameworkType.SPRING_BOOT_V2);
 
         // Assert
         assertTrue(pair.isAvailable());

@@ -1,12 +1,9 @@
 package com.forcelate.acceptance.report;
 
 import com.forcelate.acceptance.configuration.ApplicationProperties;
-import com.forcelate.acceptance.domain.processing.CaseCall;
+import com.forcelate.acceptance.domain.processing.*;
 import com.forcelate.acceptance.holder.ExecutionsHolder;
 import com.forcelate.acceptance.test.AcceptanceUtils;
-import com.forcelate.acceptance.domain.processing.CaseMapping;
-import com.forcelate.acceptance.domain.processing.CaseStatus;
-import com.forcelate.acceptance.domain.processing.Execution;
 import com.forcelate.acceptance.domain.reporting.Environment;
 import com.forcelate.acceptance.domain.reporting.Git;
 import com.forcelate.acceptance.domain.reporting.MappingsPair;
@@ -110,9 +107,9 @@ public class ReportServiceTest {
         mappings.add(CaseMapping.builder().endpoint(endpoint3).httpType(httpType3).build());
         boolean available = randomBoolean();
         MappingsPair mappingsPair = MappingsPair.builder().available(available).mappings(mappings).build();
-        when(mappingsService.retrieve()).thenReturn(mappingsPair);
+        when(mappingsService.retrieve(FrameworkType.SPRING_BOOT_V2)).thenReturn(mappingsPair);
         Git git = mock(Git.class);
-        when(gitService.retrieve()).thenReturn(git);
+        when(gitService.retrieve(FrameworkType.SPRING_BOOT_V2)).thenReturn(git);
         Map<CaseStatus, Long> count = mock(Map.class);
         when(countUtils.executionsStatuses(anyList())).thenReturn(count);
         String baseURI = randomString();
@@ -128,7 +125,7 @@ public class ReportServiceTest {
                 .build();
 
         // Act
-        Report report = serviceUnderTest.formatReport();
+        Report report = serviceUnderTest.formatReport(FrameworkType.SPRING_BOOT_V2);
 
         // Assert
         assertEquals(git, report.getGit());
@@ -147,13 +144,13 @@ public class ReportServiceTest {
         assertEquals(1, execution3.getCalls().size());
         assertEquals(MISSING, execution3.getCalls().get(0).getStatus());
         verify(sortUtils, times(2)).callsByStatus(anyList());
-        verify(mappingsService).retrieve();
+        verify(mappingsService).retrieve(FrameworkType.SPRING_BOOT_V2);
         verify(sortUtils).byEndpoint(anyList());
         verify(sortUtils).executionsByStatus(anyList());
         verify(applicationProperties).restAssureBaseURI();
         verify(applicationProperties).restAssurePort();
         verify(applicationProperties).restAssureBasePath();
-        verify(gitService).retrieve();
+        verify(gitService).retrieve(FrameworkType.SPRING_BOOT_V2);
         verify(countUtils).executionsStatuses(anyList());
     }
 

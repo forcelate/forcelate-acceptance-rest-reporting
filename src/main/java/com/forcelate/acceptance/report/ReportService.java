@@ -1,11 +1,8 @@
 package com.forcelate.acceptance.report;
 
 import com.forcelate.acceptance.configuration.ApplicationProperties;
-import com.forcelate.acceptance.domain.processing.CaseCall;
+import com.forcelate.acceptance.domain.processing.*;
 import com.forcelate.acceptance.holder.ExecutionsHolder;
-import com.forcelate.acceptance.domain.processing.CaseMapping;
-import com.forcelate.acceptance.domain.processing.CaseStatus;
-import com.forcelate.acceptance.domain.processing.Execution;
 import com.forcelate.acceptance.domain.reporting.Environment;
 import com.forcelate.acceptance.domain.reporting.MappingsPair;
 import com.forcelate.acceptance.domain.reporting.Report;
@@ -44,7 +41,7 @@ public class ReportService {
         this.applicationProperties = applicationProperties;
     }
 
-    public Report formatReport() {
+    public Report formatReport(FrameworkType frameworkType) {
         // format executions
         List<Execution> executions = ExecutionsHolder.getExecuted().keySet().stream()
                 .map(mapping -> {
@@ -54,7 +51,7 @@ public class ReportService {
                 })
                 .collect(toList());
         // format mappings (add MISSING)
-        MappingsPair mappingsPair = mappingsService.retrieve();
+        MappingsPair mappingsPair = mappingsService.retrieve(frameworkType);
         List<CaseMapping> mappings = mappingsPair.getMappings();
         mappings.removeAll(new ArrayList<>(ExecutionsHolder.getExecuted().keySet()));
         mappings.forEach(item -> {
@@ -76,7 +73,7 @@ public class ReportService {
                 .build();
         // format report
         return Report.builder()
-                .git(gitService.retrieve())
+                .git(gitService.retrieve(frameworkType))
                 .environment(environment)
                 .mappingsAvailability(mappingsPair.isAvailable())
                 .count(countUtils.executionsStatuses(executions))

@@ -1,23 +1,18 @@
 package com.forcelate.acceptance.service.impl;
 
+import com.forcelate.acceptance.domain.processing.FrameworkType;
 import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.PathNotFoundException;
 import com.forcelate.acceptance.domain.reporting.Git;
 import com.forcelate.acceptance.service.GitService;
 import com.forcelate.acceptance.support.RestAssureSupport;
 import lombok.extern.slf4j.Slf4j;
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
-import org.joda.time.format.ISODateTimeFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.net.ConnectException;
-import java.sql.Timestamp;
 
-import static com.forcelate.acceptance.configuration.ApplicationConstants.SPRING_BOOT_INFO_URL;
-import static com.forcelate.acceptance.configuration.ApplicationConstants.UNCERTAIN;
+import static com.forcelate.acceptance.configuration.ApplicationConstants.*;
 
 @Slf4j
 @Service
@@ -29,9 +24,9 @@ public class SpringBootGitService implements GitService {
         this.restAssureSupport = restAssureSupport;
     }
 
-    public Git retrieve() {
+    public Git retrieve(FrameworkType frameworkType) {
         try {
-            String json = restAssureSupport.getResponseJSON(SPRING_BOOT_INFO_URL);
+            String json = restAssureSupport.getResponseJSON(frameworkType.equals(FrameworkType.SPRING_BOOT_V1) ? SPRING_BOOT_INFO_URL_V1 : SPRING_BOOT_INFO_URL_V2);
             return Git.builder()
                     .branch(JsonPath.read(json, "$.git.branch"))
                     .commitId(JsonPath.read(json, "$.git.commit.id"))
