@@ -31,7 +31,8 @@ import static org.mockito.Mockito.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(loader=AnnotationConfigContextLoader.class)
 public class SpringBootMappingsServiceTest {
-    private static final String SPRING_BOOT_MAPPING_URL = "/actuator/mappings";
+    private static final String SPRING_BOOT_MAPPING_URL_V1 = "/mappings";
+    private static final String SPRING_BOOT_MAPPING_URL_V2 = "/actuator/mappings";
 
     @Configuration
     static class ContextConfiguration {
@@ -69,10 +70,25 @@ public class SpringBootMappingsServiceTest {
     }
 
     @Test
-    public void retrieveThrowConnectionException() throws ConnectException {
+    public void retrieveThrowConnectionExceptionSpringBootV1() throws ConnectException {
         // Arrange
         ConnectException exception = new ConnectException(randomString());
-        when(restAssureSupport.getResponseJSON(SPRING_BOOT_MAPPING_URL)).thenThrow(exception);
+        when(restAssureSupport.getResponseJSON(SPRING_BOOT_MAPPING_URL_V1)).thenThrow(exception);
+
+        // Act
+        MappingsPair pair = serviceUnderTest.retrieve(FrameworkType.SPRING_BOOT_V1);
+
+        // Assert
+        assertFalse(pair.isAvailable());
+        assertTrue(pair.getMappings().size() == 0);
+        verify(restAssureSupport).getResponseJSON(eq(SPRING_BOOT_MAPPING_URL_V1));
+    }
+
+    @Test
+    public void retrieveThrowConnectionExceptionSpringBootV2() throws ConnectException {
+        // Arrange
+        ConnectException exception = new ConnectException(randomString());
+        when(restAssureSupport.getResponseJSON(SPRING_BOOT_MAPPING_URL_V2)).thenThrow(exception);
 
         // Act
         MappingsPair pair = serviceUnderTest.retrieve(FrameworkType.SPRING_BOOT_V2);
@@ -80,15 +96,53 @@ public class SpringBootMappingsServiceTest {
         // Assert
         assertFalse(pair.isAvailable());
         assertTrue(pair.getMappings().size() == 0);
-        verify(restAssureSupport).getResponseJSON(eq(SPRING_BOOT_MAPPING_URL));
+        verify(restAssureSupport).getResponseJSON(eq(SPRING_BOOT_MAPPING_URL_V2));
     }
 
     @Test
-    public void retrieve() throws IOException {
+    public void retrieveSpringBootV1() throws IOException {
         // Arrange
-        try (InputStream is = SpringBootGitServiceTest.class.getResourceAsStream("/mappings.json")) {
+        try (InputStream is = SpringBootGitServiceTest.class.getResourceAsStream("/mappingsSpringBootV1.json")) {
             String json = IOUtils.toString(is);
-            when(restAssureSupport.getResponseJSON(SPRING_BOOT_MAPPING_URL)).thenReturn(json);
+            when(restAssureSupport.getResponseJSON(SPRING_BOOT_MAPPING_URL_V1)).thenReturn(json);
+        }
+
+        // Act
+        MappingsPair pair = serviceUnderTest.retrieve(FrameworkType.SPRING_BOOT_V1);
+
+        // Assert
+        assertTrue(pair.isAvailable());
+        List<CaseMapping> mappings = pair.getMappings();
+        assertTrue(mappings.size() == 4);
+        assertTrue(mappings.contains(
+                CaseMapping.builder()
+                        .endpoint("/constants/languages")
+                        .httpType("GET")
+                        .build()));
+        assertTrue(mappings.contains(
+                CaseMapping.builder()
+                        .endpoint("/constants/author/types")
+                        .httpType("GET")
+                        .build()));
+        assertTrue(mappings.contains(
+                CaseMapping.builder()
+                        .endpoint("/constants/quote/types")
+                        .httpType("GET")
+                        .build()));
+        assertTrue(mappings.contains(
+                CaseMapping.builder()
+                        .endpoint("/constants/quote/templates")
+                        .httpType("GET")
+                        .build()));
+        verify(restAssureSupport).getResponseJSON(eq(SPRING_BOOT_MAPPING_URL_V1));
+    }
+
+    @Test
+    public void retrieveSpringBootV2() throws IOException {
+        // Arrange
+        try (InputStream is = SpringBootGitServiceTest.class.getResourceAsStream("/mappingsSpringBootV2.json")) {
+            String json = IOUtils.toString(is);
+            when(restAssureSupport.getResponseJSON(SPRING_BOOT_MAPPING_URL_V2)).thenReturn(json);
         }
 
         // Act
@@ -118,6 +172,6 @@ public class SpringBootMappingsServiceTest {
                         .endpoint("/constants/quote/templates")
                         .httpType("GET")
                         .build()));
-        verify(restAssureSupport).getResponseJSON(eq(SPRING_BOOT_MAPPING_URL));
+        verify(restAssureSupport).getResponseJSON(eq(SPRING_BOOT_MAPPING_URL_V2));
     }
 }

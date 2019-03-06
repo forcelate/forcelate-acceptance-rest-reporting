@@ -39,6 +39,13 @@ public class SpringBootGitService implements GitService {
                     .commitId(UNCERTAIN)
                     .commitTime(UNCERTAIN)
                     .build();
+        } catch (NullPointerException e) {
+            log.error("Spring version is null {}", e);
+            return Git.builder()
+                    .branch(UNCERTAIN)
+                    .commitId(UNCERTAIN)
+                    .commitTime(UNCERTAIN)
+                    .build();
         }
     }
 }

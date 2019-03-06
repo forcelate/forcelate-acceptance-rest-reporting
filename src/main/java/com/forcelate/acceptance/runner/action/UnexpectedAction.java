@@ -4,7 +4,6 @@ import com.forcelate.acceptance.configuration.ApplicationConstants;
 import com.forcelate.acceptance.domain.processing.CaseStatus;
 import org.junit.runner.Description;
 
-
 public class UnexpectedAction implements FailedAction {
 
     @Override

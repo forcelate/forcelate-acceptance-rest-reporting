@@ -91,7 +91,72 @@ public class ReportServiceTest {
 
     @Test
     @SuppressWarnings("unchecked")
-    public void formatReport() throws AcceptanceException {
+    public void formatReportSpringBootV1() throws AcceptanceException {
+        // Arrange
+        String endpoint1 = "/api/method1";
+        String httpType1 = "GET";
+        String endpoint2 = "/api/method2";
+        String httpType2 = "GET";
+        String endpoint3 = "/api/method3";
+        String httpType3 = "GET";
+        ExecutionsHolder.addExecution(AcceptanceUtils.description(endpoint1, httpType1), SUCCESS, randomString());
+        ExecutionsHolder.addExecution(AcceptanceUtils.description(endpoint2, httpType2), FAILURE, randomString());
+        List<CaseMapping> mappings = new ArrayList<>();
+        mappings.add(CaseMapping.builder().endpoint(endpoint1).httpType(httpType1).build());
+        mappings.add(CaseMapping.builder().endpoint(endpoint2).httpType(httpType2).build());
+        mappings.add(CaseMapping.builder().endpoint(endpoint3).httpType(httpType3).build());
+        boolean available = randomBoolean();
+        MappingsPair mappingsPair = MappingsPair.builder().available(available).mappings(mappings).build();
+        when(mappingsService.retrieve(FrameworkType.SPRING_BOOT_V1)).thenReturn(mappingsPair);
+        Git git = mock(Git.class);
+        when(gitService.retrieve(FrameworkType.SPRING_BOOT_V1)).thenReturn(git);
+        Map<CaseStatus, Long> count = mock(Map.class);
+        when(countUtils.executionsStatuses(anyList())).thenReturn(count);
+        String baseURI = randomString();
+        int port = randomInteger();
+        String basePath = randomString();
+        when(applicationProperties.restAssureBaseURI()).thenReturn(baseURI);
+        when(applicationProperties.restAssurePort()).thenReturn(port);
+        when(applicationProperties.restAssureBasePath()).thenReturn(basePath);
+        Environment environment = Environment.builder()
+                .baseURI(baseURI)
+                .port(port)
+                .basePath(basePath)
+                .build();
+
+        // Act
+        Report report = serviceUnderTest.formatReport(FrameworkType.SPRING_BOOT_V1);
+
+        // Assert
+        assertEquals(git, report.getGit());
+        assertEquals(environment, report.getEnvironment());
+        assertEquals(available, report.isMappingsAvailability());
+        assertEquals(count, report.getCount());
+        List<Execution> executions = report.getExecutions();
+        assertEquals(3, executions.size());
+        Execution execution1 = findExecution(executions, endpoint1);
+        assertEquals(1, execution1.getCalls().size());
+        assertEquals(SUCCESS, execution1.getCalls().get(0).getStatus());
+        Execution execution2 = findExecution(executions, endpoint2);
+        assertEquals(1, execution2.getCalls().size());
+        assertEquals(FAILURE, execution2.getCalls().get(0).getStatus());
+        Execution execution3 = findExecution(executions, endpoint3);
+        assertEquals(1, execution3.getCalls().size());
+        assertEquals(MISSING, execution3.getCalls().get(0).getStatus());
+        verify(sortUtils, times(2)).callsByStatus(anyList());
+        verify(mappingsService).retrieve(FrameworkType.SPRING_BOOT_V1);
+        verify(sortUtils).byEndpoint(anyList());
+        verify(sortUtils).executionsByStatus(anyList());
+        verify(applicationProperties).restAssureBaseURI();
+        verify(applicationProperties).restAssurePort();
+        verify(applicationProperties).restAssureBasePath();
+        verify(gitService).retrieve(FrameworkType.SPRING_BOOT_V1);
+        verify(countUtils).executionsStatuses(anyList());
+    }
+
+    @Test
+    @SuppressWarnings("unchecked")
+    public void formatReportSpringBootV2() throws AcceptanceException {
         // Arrange
         String endpoint1 = "/api/method1";
         String httpType1 = "GET";

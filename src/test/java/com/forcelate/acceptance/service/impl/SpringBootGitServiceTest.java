@@ -20,8 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.ConnectException;
 
-import static com.forcelate.acceptance.configuration.ApplicationConstants.SPRING_BOOT_INFO_URL_V2;
-import static com.forcelate.acceptance.configuration.ApplicationConstants.UNCERTAIN;
+import static com.forcelate.acceptance.configuration.ApplicationConstants.*;
 import static com.forcelate.acceptance.test.RandomUtils.randomString;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.eq;
@@ -61,7 +60,23 @@ public class SpringBootGitServiceTest {
     }
 
     @Test
-    public void retrieveThrowConnectionException() throws ConnectException {
+    public void retrieveThrowConnectionExceptionSpringBootV1() throws ConnectException {
+        // Arrange
+        ConnectException exception = new ConnectException(randomString());
+        when(restAssureSupport.getResponseJSON(SPRING_BOOT_INFO_URL_V1)).thenThrow(exception);
+
+        // Act
+        Git git = serviceUnderTest.retrieve(FrameworkType.SPRING_BOOT_V1);
+
+        // Assert
+        assertEquals(UNCERTAIN, git.getBranch());
+        assertEquals(UNCERTAIN, git.getCommitId());
+        assertEquals(UNCERTAIN, git.getCommitTime());
+        verify(restAssureSupport).getResponseJSON(eq(SPRING_BOOT_INFO_URL_V1));
+    }
+
+    @Test
+    public void retrieveThrowConnectionExceptionSpringBootV2() throws ConnectException {
         // Arrange
         ConnectException exception = new ConnectException(randomString());
         when(restAssureSupport.getResponseJSON(SPRING_BOOT_INFO_URL_V2)).thenThrow(exception);
@@ -77,7 +92,25 @@ public class SpringBootGitServiceTest {
     }
 
     @Test
-    public void retrieve() throws IOException {
+    public void retrieveSpringBootV1() throws IOException {
+        // Arrange
+        try (InputStream is = SpringBootGitServiceTest.class.getResourceAsStream("/git.json")) {
+            String json = IOUtils.toString(is);
+            when(restAssureSupport.getResponseJSON(SPRING_BOOT_INFO_URL_V1)).thenReturn(json);
+        }
+
+        // Act
+        Git git = serviceUnderTest.retrieve(FrameworkType.SPRING_BOOT_V1);
+
+        // Assert
+        assertEquals("dev", git.getBranch());
+        assertEquals("7cb511a", git.getCommitId());
+        assertEquals("2018-12-13T17:19:31Z", git.getCommitTime());
+        verify(restAssureSupport).getResponseJSON(eq(SPRING_BOOT_INFO_URL_V1));
+    }
+
+    @Test
+    public void retrieveSpringBootV2() throws IOException {
         // Arrange
         try (InputStream is = SpringBootGitServiceTest.class.getResourceAsStream("/git.json")) {
             String json = IOUtils.toString(is);
