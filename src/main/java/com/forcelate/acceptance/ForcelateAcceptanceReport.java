@@ -18,7 +18,7 @@ public final class ForcelateAcceptanceReport {
         ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationBeans.class);
         ReportService reportService = context.getBean(ReportService.class);
         FreemarkerUtils freemarkerUtils = context.getBean(FreemarkerUtils.class);
-        Report report = reportSerice.formatReport(frameworkType);
+        Report report = reportService.formatReport(frameworkType);
         freemarkerUtils.generateReport(report);
     }
 }
