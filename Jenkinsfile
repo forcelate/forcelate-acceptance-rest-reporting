@@ -40,7 +40,7 @@ pipeline {
                     currentBuild.result = 'SUCCESS'
                 }
             }
-            notifications()
+            alwaysNotifications()
         }
         failure {
             failureNotifications()
@@ -48,7 +48,7 @@ pipeline {
     }
 }
 
-def notifications() {
+def alwaysNotifications() {
     emailext (
         to: "$FORCELATE_CTO, $FORCELATE_DEVELOPERS",
         subject: '${DEFAULT_SUBJECT}',
