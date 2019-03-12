@@ -1,10 +1,11 @@
 <html>
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'">
     <title>Acceptance Report</title>
 </head>
-<body>
-    <p style="text-size:16px;">
+<body style="margin: 8px">
+    <p style="font-size:16px;">
   	    <u>Acceptance Report</u>
     </p>
     <p>
@@ -45,17 +46,17 @@
         </p>
     </#if>
     <p></p>
-    <table border="1" style="width:100%;">
-        <thead>
-            <tr>
-                <th width="20%" align="center">Endpoint</th>
-                <th width="20%" align="center">HTTP Type</th>
-                <th align="center">Description, Message, Status</th>
+    <table class="table table-bordered" border="1" style="width:100%;">
+        <thead class="thead-light">
+            <tr class="text-center">
+                <th scope="col" width="20%">Endpoint</th>
+                <th scope="col" width="20%" align="center">HTTP Type</th>
+                <th scope="col" align="center">Description, Message, Status</th>
             </tr>
         </thead>
         <#list report.executions as execution>
             <tr>
-                <td width="20%">${execution.mapping.endpoint}</td>
+                <th width="20%">${execution.mapping.endpoint}</th>
                 <td width="20%" align="center">${execution.mapping.httpType}</td>
                 <td>
                     <table border="1" style="width:100%;">
@@ -64,27 +65,27 @@
                                 <td width="30%" align="center">${call.description}</td>
                                 <td width="40%" align="center">${call.message}</td>
                                 <#if call.status == 'Success'>
-                                    <td width="30%" align="center" style="color:green">
+                                    <td width="30%" align="center" class="table-success" style="color:green">
                                         <b>${call.status}</b>
                                     </td>
                                 <#elseif call.status == 'Missing'>
-                                     <td width="30%" align="center" style="color:black">
+                                     <td width="30%" align="center" class="table-secondary" style="color:black">
                                          <b>${call.status}</b>
                                      </td>
                                 <#elseif call.status == 'Empty'>
-                                     <td width="30%" align="center" style="color:blue">
+                                     <td width="30%" align="center" class="table-info" style="color:blue">
                                          <b>${call.status}</b>
                                      </td>
                                 <#elseif call.status == 'Failure'>
-                                     <td width="30%" align="center" style="color:red">
+                                     <td width="30%" align="center" class="table-danger" style="color:red">
                                          <b>${call.status}</b>
                                      </td>
                                 <#elseif call.status == 'Unexpected'>
-                                     <td width="30%" align="center" style="color:red">
+                                     <td width="30%" align="center" class="table-danger" style="color:red">
                                          <b>${call.status}</b>
                                      </td>
                                 <#elseif call.status == 'Server Down'>
-                                     <td width="30%" align="center" style="color:red">
+                                     <td width="30%" align="center" class="table-danger" style="color:red">
                                          <b>${call.status}</b>
                                      </td>
                                 </#if>
