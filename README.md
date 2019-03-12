@@ -10,11 +10,11 @@ Acceptance Reports: REST-API based on Rest-Assured
 Spring Boot v1.* (dev profile)
 
 <p align="center">
-	<img src="https://github.com/forcelate//forcelate-acceptance-rest-reporting/blob/master/imgs/v1-dev.jpg?raw=true" alt=""/>
+	<img src="https://raw.githubusercontent.com/forcelate/forcelate-acceptance-rest-reporting/master/imgs/v1-dev.png" alt=""/>
 </p>
 
 Spring Boot v1.* (prod profile)
 
 <p align="center">
-	<img src="https://github.com/forcelate//forcelate-acceptance-rest-reporting/blob/master/imgs/v1-prod.jpg?raw=true" alt=""/>
+	<img src="https://raw.githubusercontent.com/forcelate/forcelate-acceptance-rest-reporting/master/imgs/v1-prod.png" alt=""/>
 </p>
