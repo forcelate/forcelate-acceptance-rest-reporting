@@ -33,5 +33,5 @@ Spring Boot v2.* (prod profile)
 
 ### Code
 See more:  
-Spring Boot v1.*: https://github.com/forcelate/forcelate-temple-java/tree/master/rest-reporting/spring-boot-v1  
-Spring Boot v2.*: https://github.com/forcelate/forcelate-temple-java/tree/master/rest-reporting/spring-boot-v2 
+Spring Boot v1: https://github.com/forcelate/forcelate-temple-java/tree/master/rest-reporting/spring-boot-v1  
+Spring Boot v2: https://github.com/forcelate/forcelate-temple-java/tree/master/rest-reporting/spring-boot-v2 
