@@ -1,4 +1,6 @@
 # forcelate-acceptance-rest-reporting
+### NO LONGER SUPPORTED
+
 Acceptance Reports: REST-API based on Rest-Assured
 
 ### Support
