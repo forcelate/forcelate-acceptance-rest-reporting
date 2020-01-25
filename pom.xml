@@ -16,7 +16,7 @@
         <assertj.version>3.11.1</assertj.version>
         <config.version>1.3.3</config.version>
         <freemarker.version>2.3.28</freemarker.version>
-        <jackson.version>2.9.4</jackson.version>
+        <jackson.version>2.9.10.1</jackson.version>
         <json.path.version>2.2.0</json.path.version>
         <junit.version>4.12</junit.version>
         <lombok.version>1.18.4</lombok.version>
