@@ -152,9 +152,9 @@
                 </executions>
                 <configuration>
                     <excludes>
-                        <exclude>com.forcelate.acceptance.domain</exclude>
-                        <exclude>com.forcelate.acceptance.dto</exclude>
-                        <exclude>com.forcelate.acceptance.exception</exclude>
+                        <exclude>io.tech1.acceptance.domain</exclude>
+                        <exclude>io.tech1.acceptance.dto</exclude>
+                        <exclude>io.tech1.acceptance.exception</exclude>
                     </excludes>
                 </configuration>
             </plugin>
@@ -170,16 +170,16 @@
                     </formats>
                     <instrumentation>
                         <excludes>
-                            <exclude>com/forcelate/acceptance/ForcelateAcceptanceReport.class</exclude>
-                            <exclude>com/forcelate/acceptance/configuration/ApplicationBeans.class</exclude>
-                            <exclude>com/forcelate/acceptance/configuration/ApplicationConstants.class</exclude>
-                            <exclude>com/forcelate/acceptance/configuration/ApplicationErrorMessages.class</exclude>
-                            <exclude>com/forcelate/acceptance/configuration/ApplicationProperties.class</exclude>
-                            <exclude>com/forcelate/acceptance/domain/**/*.class</exclude>
-                            <exclude>com/forcelate/acceptance/runner/AcceptanceAbstractRunner.class</exclude>
-                            <exclude>com/forcelate/acceptance/runner/AcceptanceAbstractRunner$1.class</exclude>
-                            <exclude>com/forcelate/acceptance/runner/AcceptanceAbstractRunner$2.class</exclude>
-                            <exclude>com/forcelate/acceptance/support/RestAssureSupport.class</exclude>
+                            <exclude>io/tech1/acceptance/Tech1AcceptanceReport.class</exclude>
+                            <exclude>io/tech1/acceptance/configuration/ApplicationBeans.class</exclude>
+                            <exclude>io/tech1/acceptance/configuration/ApplicationConstants.class</exclude>
+                            <exclude>io/tech1/acceptance/configuration/ApplicationErrorMessages.class</exclude>
+                            <exclude>io/tech1/acceptance/configuration/ApplicationProperties.class</exclude>
+                            <exclude>io/tech1/acceptance/domain/**/*.class</exclude>
+                            <exclude>io/tech1/acceptance/runner/AcceptanceAbstractRunner.class</exclude>
+                            <exclude>io/tech1/acceptance/runner/AcceptanceAbstractRunner$1.class</exclude>
+                            <exclude>io/tech1/acceptance/runner/AcceptanceAbstractRunner$2.class</exclude>
+                            <exclude>io/tech1/acceptance/support/RestAssureSupport.class</exclude>
                         </excludes>
                     </instrumentation>
                     <check/>
